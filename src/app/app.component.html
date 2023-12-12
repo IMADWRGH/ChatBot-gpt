@@ -1,0 +1,18 @@
+<nav class="p-3">
+  <ul class="nav nav-pills">
+    <li class="nav-item m-2" *ngFor="let action of actions">
+      <button
+        (click)="handleRoute(action)"
+        [ngClass]="
+          action === currentAction
+            ? 'btn btn-primary ms-1'
+            : 'btn btn-outline-primary ms-1'
+        "
+      >
+        <i class="bi bi-{{ action.icon }}"> </i>
+        {{ action.title }}
+      </button>
+    </li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

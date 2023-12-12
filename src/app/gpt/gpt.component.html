@@ -1,0 +1,42 @@
+<div class="p-3">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="queryFromGroup" (ngSubmit)="HandleAskGPT()">
+        <div class="mb-3">
+          <label for="question" class="form-label">Query :</label>
+          <textarea class="form-control" formControlName="query"></textarea>
+        </div>
+        <button class="btn btn-primary">Ask GPT</button>
+      </form>
+      <div class="alert alert-primary m-4" *ngIf="result">
+        <!-- <pre>{{ result | json }}</pre> -->
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let choice of result.choices">
+            <pre>{{ choice.message.content }}</pre>
+          </li>
+        </ul>
+      </div>
+      <div class="card m-4">
+        <div class="card-header">
+          <h2>Chat with GPT</h2>
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Content</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let msg of messages">
+                <td>{{ msg.role }}</td>
+                <td>{{ msg.content }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
